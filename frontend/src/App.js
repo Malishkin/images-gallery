@@ -4,7 +4,7 @@ import Search from './components/Search';
 import ImageCard from './components/ImageCard';
 import Welcome from './components/Welcome';
 import { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 
 const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
 
@@ -39,13 +39,17 @@ const App = () => {
       <Header title='Images Gallery' />
       <Search handleSubmit={handleSearchSubmit} word={word} setWord={setWord} />
       <Container className='mt-4'>
-       {images.length ?  <Row xs={1} md={2} lg={3}>
-          { images.map((image, index) => (
-            <Col key={index} className='pb-3'>
-              <ImageCard image={image} deleteImage={handleDeleteImage} />
-            </Col>
-          ))}
-        </Row>: <Welcome/>}
+        {images.length ? (
+          <Row xs={1} md={2} lg={3}>
+            {images.map((image, index) => (
+              <Col key={index} className='pb-3'>
+                <ImageCard image={image} deleteImage={handleDeleteImage} />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <Welcome />
+        )}
       </Container>
     </div>
   );
