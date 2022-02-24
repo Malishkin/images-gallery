@@ -5,6 +5,7 @@ from urllib import response
 import requests
 from flask import Flask, request
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 load_dotenv(dotenv_path=("./.env.local"))
 
@@ -19,6 +20,7 @@ if not UNSPLASH_ACCESS_KEY:
 
 
 app = Flask(__name__)  # main
+CORS(app)
 app.config["DEBUG"] = DEBUG
 
 
